@@ -1,0 +1,41 @@
+
+
+install jdk 8
+
+>sudo yum install ava-1.8.0-openjdk-devel
+>JAVA_HOME=/usr/lib/jvmjava-1.8.0-openjdk
+>cd /usr/bin
+>sudo ln -sfn $JAVA_HOME/bin/java java
+
+
+install logstash
+
+>cd ~
+>wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.0.rpm
+>sudo yum install logstash-5.4.0.rpm
+>sudo vi /etc/logstash/conf.d/logstash.conf
+
+
+input { file { path => "/tmp/log.txt" } }
+output { elasticsearch { hosts => ["search-xxx-xxx.eu-west-1.es.amazonaws.com:80"] } }
+
+
+>sudo vi /etc/logstash/logstash.yml
+
+#change to debug following
+config.debug: debug
+log.level: debug
+
+>sudo start logstash
+>sudo stop logstasg
+
+>tail -f /var/log/logstash/logstash-plain.log
+
+
+Verify:
+https://search-xxx-xxx.eu-west-1.es.amazonaws.com/_search/?size=1000&pretty=1
+
+
+
+
+
