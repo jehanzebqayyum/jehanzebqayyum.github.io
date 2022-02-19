@@ -50,3 +50,4 @@ WHERE
 ORDER BY sml desc limit 10;
 ```
 
+Above query should be satisfied from the GIN index. If index recheck (to backing table) is encountered, look into ways to reduce index size e.g. by horizontal partitioning.
