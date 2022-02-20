@@ -1,0 +1,5 @@
+Building Microservices by Sam Newman
+2 - how to model
+information hiding, cohesion and coupling
+types of coupling: domain (temporal), pass-through, common(shared), content
+microservice boundary: ddd bounded contexts or aggregates, event storming, volatility (freequently innovated), data (security etc), technology, organization
